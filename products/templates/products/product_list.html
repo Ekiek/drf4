@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Products</h1>
+    <a href="{% url 'product_add' %}">Add Product</a>
+    <ul>
+        {% for product in products %}
+        <li>
+            <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+            <a href="{% url 'product_edit' product.pk %}">Edit</a>
+        </li>
+        {% empty %}
+        <li>No products yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
